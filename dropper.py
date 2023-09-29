@@ -9,8 +9,8 @@ def download_client(ftp_server_ip):
 	ftp = FTP(ftp_server_ip)
 	ftp.login()
 
-	with open('client.php', 'wb') as fp:
-		ftp.retrbinary('RETR CLIENT.PHP', fp.write)
+	with open('client.py', 'wb') as fp:
+		ftp.retrbinary('RETR CLIENT.PY', fp.write)
 
 	ftp.quit()
 
@@ -20,10 +20,9 @@ def install_server(ftp_server_ip):
 	DISTRO_VERSION: str = platform.version()
 
 	if OS == 'Windows':
-		pass
+		download_client(ftp_server_ip)
+		os.system('python client.py')
 
-	elif OS == 'Linux':
-		pass
-
-	elif OS == 'MacOS':
-		pass
+	elif OS == 'Linux' or OS == 'MacOS':
+		download_client(ftp_server_ip)
+		os.system('python3 client.py')
