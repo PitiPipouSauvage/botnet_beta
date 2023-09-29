@@ -23,6 +23,6 @@ def install_server(ftp_server_ip):
 		download_client(ftp_server_ip)
 		os.system('python client.py')
 
-	elif OS == 'Linux' or OS == 'MacOS':
+	elif OS == 'Linux' or OS == 'MacOS':	
 		download_client(ftp_server_ip)
 		os.system('python3 client.py')
